@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editz!</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <h1>Hi there!</h1>
+    <textarea id="html" placeholder="HTML Goes Here..." autofocus cols="50" rows="10"></textarea><br>
+    <iframe id="x" src="javascript:'';"></iframe>
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
+<script>document.getElementById("html").onkeydown = e => {
+  if (e.key === ">") {
+    for (var i = 0; i < document.getElementById("html").value.length; i++) {
+      var res = document
+        .getElementById("html")
+        .value.split("<")
+        [i + 1].split(">")[i];
+      setTimeout(function() {
+        document.getElementById("html").value = document
+          .getElementById("html")
+          .value.replace("<" + res + ">", "<" + res + ">\n\n</" + res + ">\n");
+      }, 100);
+    }
+  }
+};
+setInterval(function(){
+document.getElementById('x').document.write(document.getElementById("html").value)
+  }, 1000)</script>
